@@ -3,488 +3,224 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Übungsbahnen Deutsch Klasse 10 — Elsenztalschule Bammental">
-<title>Lernband Deutsch 10</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Fira+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<title>Deutsch 10 · Woche 1 · Satzglieder</title>
 <style>
-/* Layout: eine Spalte, Bahn für Bahn — Übersicht oben, eine Aufgabe pro Bildschirm */
-:root{
-  --gruen:#1E5631;      /* Schulgrün, Flächen und Überschriften */
-  --hell:#6FAE3A;       /* Hellgrün, richtig */
-  --orange:#D1692B;     /* Orange, Aktion und Akzent */
-  --papier:#F6F7F3;     /* Seitengrund */
-  --karte:#FFFFFF;      /* Kartengrund */
-  --tinte:#1C2420;      /* Fließtext */
-  --matt:#5E6B62;       /* Sekundärtext */
-  --linie:#D6DED4;      /* Trennlinien */
-  --falsch:#B23A2E;     /* falsch */
-  --display:"Zilla Slab",Georgia,serif;
-  --body:"Fira Sans","Helvetica Neue",Arial,sans-serif;
-  color-scheme:light;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --gruen:#8FD05B; --hell:#8FD05B; --orange:#F09357;
-    --papier:#12170F; --karte:#1B221A; --tinte:#ECF1E8; --matt:#A3B09C;
-    --linie:#2E3A2C; --falsch:#F08A7E; color-scheme:dark;
+  :root{
+    --green:#1E5631; --green2:#2C6C3F; --lime:#8CC63F; --light:#F1F6EE; --orange:#E07B39;
+    --ink:#1A1A1A; --grey:#5F6B60; --line:#C9DCC2; --rose:#F6EDE6; --red:#B3261E; --bg:#FFFFFF;
   }
-}
-:root[data-theme="dark"]{
-  --gruen:#8FD05B; --hell:#8FD05B; --orange:#F09357;
-  --papier:#12170F; --karte:#1B221A; --tinte:#ECF1E8; --matt:#A3B09C;
-  --linie:#2E3A2C; --falsch:#F08A7E; color-scheme:dark;
-}
-*{box-sizing:border-box}
-body{
-  background:var(--papier); color:var(--tinte);
-  font-family:var(--body); font-size:16px; line-height:1.55;
-  padding-inline:16px; padding-block:0;
-}
-.wrap{max-width:640px; margin-inline:auto; padding-block:28px 56px}
-h1,h2,h3{font-family:var(--display); text-wrap:balance; margin:0}
-.eyebrow{
-  font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--orange); margin:0 0 6px
-}
-h1{font-size:clamp(28px,7vw,38px); font-weight:700; color:var(--gruen); line-height:1.12}
-.sub{color:var(--matt); margin:8px 0 0; font-size:15px}
-
-/* ---------- Übersicht ---------- */
-.bahnen{display:grid; gap:12px; margin:26px 0 0}
-.bahn{
-  display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:14px;
-  background:var(--karte); border:1px solid var(--linie); border-radius:14px;
-  padding:16px; width:100%; text-align:left; cursor:pointer;
-  font:inherit; color:inherit;
-}
-.bahn:hover{border-color:var(--gruen)}
-.bahn:focus-visible{outline:3px solid var(--orange); outline-offset:2px}
-.ring{width:46px; height:46px; flex:none; display:grid; place-items:center; position:relative}
-.ring svg{position:absolute; inset:0; transform:rotate(-90deg)}
-.ring span{font-family:var(--display); font-weight:700; font-size:15px; color:var(--gruen); z-index:1; font-variant-numeric:tabular-nums}
-.bahn h2{font-size:18px; color:var(--tinte); font-weight:700}
-.bahn p{margin:2px 0 0; font-size:13.5px; color:var(--matt)}
-.pfeil{color:var(--matt); font-size:20px; line-height:1}
-
-.notiz{
-  margin:26px 0 0; padding:14px 16px; border-radius:12px;
-  background:color-mix(in srgb, var(--gruen) 8%, var(--karte));
-  border:1px solid var(--linie); font-size:13.5px; color:var(--matt)
-}
-.notiz strong{color:var(--tinte)}
-
-/* ---------- Aufgabenansicht ---------- */
-.kopf{display:flex; align-items:center; gap:12px; margin-bottom:18px}
-.zurueck{
-  font:inherit; font-size:14px; color:var(--matt); background:none; border:0;
-  padding:6px 2px; cursor:pointer; text-decoration:underline; text-underline-offset:3px
-}
-.zurueck:focus-visible{outline:3px solid var(--orange); outline-offset:2px}
-.zaehler{margin-left:auto; font-size:13px; color:var(--matt); font-variant-numeric:tabular-nums}
-.balken{height:5px; border-radius:99px; background:var(--linie); overflow:hidden; margin-bottom:22px}
-.balken i{display:block; height:100%; background:var(--gruen); transition:width .3s ease}
-
-.karte{
-  background:var(--karte); border:1px solid var(--linie); border-radius:16px;
-  padding:20px; margin-bottom:16px
-}
-.lesetext{
-  font-size:15px; line-height:1.72; white-space:pre-line;
-  border-left:3px solid var(--gruen); padding-left:14px; color:var(--tinte)
-}
-.quelle{font-size:12.5px; color:var(--matt); margin:10px 0 0}
-.frage{font-family:var(--display); font-size:20px; font-weight:500; line-height:1.35; margin:0 0 16px}
-.frage em{font-style:normal; background:color-mix(in srgb, var(--orange) 22%, transparent); padding:0 4px; border-radius:4px}
-
-.optionen{display:grid; gap:10px}
-.opt{
-  font:inherit; text-align:left; background:var(--karte); color:var(--tinte);
-  border:1.5px solid var(--linie); border-radius:12px; padding:13px 15px; cursor:pointer;
-  display:flex; gap:11px; align-items:flex-start; transition:border-color .15s, background .15s
-}
-.opt:hover:not(:disabled){border-color:var(--gruen)}
-.opt:focus-visible{outline:3px solid var(--orange); outline-offset:2px}
-.opt:disabled{cursor:default}
-.opt b{
-  flex:none; width:22px; height:22px; border-radius:6px; display:grid; place-items:center;
-  background:color-mix(in srgb, var(--gruen) 12%, transparent); color:var(--gruen);
-  font-size:12.5px; font-weight:700; margin-top:1px
-}
-.opt.richtig{border-color:var(--hell); background:color-mix(in srgb, var(--hell) 14%, var(--karte))}
-.opt.richtig b{background:var(--hell); color:#10210A}
-.opt.daneben{border-color:var(--falsch); background:color-mix(in srgb, var(--falsch) 10%, var(--karte))}
-.opt.daneben b{background:var(--falsch); color:#fff}
-
-.warum{
-  margin-top:14px; padding:14px 16px; border-radius:12px; font-size:14.5px;
-  background:color-mix(in srgb, var(--gruen) 9%, var(--karte)); border:1px solid var(--linie)
-}
-.warum strong{font-family:var(--display); display:block; margin-bottom:3px; color:var(--gruen)}
-
-.weiter{
-  font:inherit; font-weight:700; font-size:16px; width:100%;
-  background:var(--orange); color:#fff; border:0; border-radius:12px;
-  padding:15px; cursor:pointer; margin-top:16px
-}
-.weiter:focus-visible{outline:3px solid var(--gruen); outline-offset:2px}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .weiter{color:#1A1004}}
-:root[data-theme="dark"] .weiter{color:#1A1004}
-
-/* ---------- Abschluss ---------- */
-.ende{text-align:center; padding:12px 4px 4px}
-.ende .punkte{font-family:var(--display); font-size:52px; font-weight:700; color:var(--gruen); line-height:1; font-variant-numeric:tabular-nums}
-.ende .von{color:var(--matt); font-size:15px; margin-top:4px}
-.ende h2{font-size:22px; margin:18px 0 6px; color:var(--tinte)}
-.ende p{color:var(--matt); font-size:15px; margin:0}
-.endeknoepfe{display:grid; gap:10px; margin-top:22px}
-.zweit{
-  font:inherit; font-weight:500; font-size:15px; background:none; color:var(--gruen);
-  border:1.5px solid var(--gruen); border-radius:12px; padding:13px; cursor:pointer
-}
-.zweit:focus-visible{outline:3px solid var(--orange); outline-offset:2px}
-
-.fuss{margin-top:34px; padding-top:18px; border-top:1px solid var(--linie); font-size:12.5px; color:var(--matt)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.45}
+  header{background:var(--green);color:#fff;padding:20px 16px 18px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+  header .wrap{padding:0}
+  .kicker{color:var(--lime);font-size:13px;font-weight:bold;letter-spacing:.06em;text-transform:uppercase}
+  h1{margin:4px 0 2px;font-size:26px}
+  header p{margin:0;color:#D6E6D0;font-size:14px}
+  nav{display:flex;gap:8px;margin:18px 0 6px;flex-wrap:wrap}
+  nav button{flex:1 1 160px;border:0;border-radius:999px;padding:11px 14px;font:inherit;font-weight:bold;cursor:pointer;background:var(--light);color:var(--green)}
+  nav button[aria-selected="true"]{background:var(--green);color:#fff}
+  .card{background:var(--light);border-radius:12px;padding:16px;margin:14px 0}
+  .muted{color:var(--grey);font-size:14px}
+  .stern{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-top:8px}
+  .stern div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px}
+  .stern b{display:block;color:var(--green)}
+  .sentence{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+  .chunk{border:2px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;font-size:17px;cursor:pointer;min-height:44px;text-align:left;font-family:inherit;color:var(--ink)}
+  .chunk small{display:block;font-size:12px;color:var(--grey);margin-top:2px;min-height:14px}
+  .chunk.active{border-color:var(--orange);box-shadow:0 0 0 3px #f5d2bb}
+  .chunk.ok{border-color:var(--green);background:#E3F0DC}
+  .chunk.bad{border-color:var(--red);background:#FBE9E7}
+  .labels{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;margin-top:12px}
+  .labels button{border:1px solid var(--green);background:#fff;color:var(--green);border-radius:8px;padding:10px 8px;font:inherit;font-size:14px;cursor:pointer;min-height:44px}
+  .labels button:hover,.labels button:focus-visible{background:var(--light)}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+  .btn{border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:bold;cursor:pointer;min-height:44px}
+  .btn.primary{background:var(--green);color:#fff}
+  .btn.ghost{background:#fff;color:var(--green);border:1px solid var(--green)}
+  .feedback{margin-top:12px;padding:10px 12px;border-radius:8px;font-size:15px;display:none}
+  .feedback.show{display:block}
+  .feedback.good{background:#E3F0DC;color:var(--green)}
+  .feedback.warn{background:var(--rose);color:#7A3A12}
+  .score{margin-left:auto;font-weight:bold;color:var(--green)}
+  .question{font-size:20px;font-weight:bold;color:var(--orange);margin:6px 0}
+  footer{color:var(--grey);font-size:12px;padding:18px 16px 28px;text-align:center}
+  [hidden]{display:none!important}
+  @media (prefers-reduced-motion:no-preference){.chunk,.labels button{transition:background .15s,border-color .15s}}
 </style>
-
 </head>
 <body>
-<div class="wrap">
+<header>
+  <div class="wrap">
+    <div class="kicker">Deutsch 10 · Woche 1 · freiwillig</div>
+    <h1>Satzglieder üben</h1>
+    <p>Elsenztalschule Bammental · sofortige Rückmeldung · so oft du willst</p>
+  </div>
+</header>
 
-  <!-- ÜBERSICHT -->
-  <section id="start">
-    <p class="eyebrow">Lernband · Woche 1 · 12. bis 16. Oktober</p>
-    <h1>Fünf Bahnen, so viel du magst</h1>
-    <p class="sub">Freiwillig, zusätzlich zum Satz der Woche. Jede Bahn dauert fünf bis zehn Minuten. Du bekommst nach jeder Antwort sofort die Auflösung — und die Begründung dazu.</p>
+<main class="wrap">
+  <nav role="tablist" aria-label="Übungen">
+    <button role="tab" id="tab-a" aria-selected="true" aria-controls="pane-a">1 · Satzglieder bestimmen</button>
+    <button role="tab" id="tab-b" aria-selected="false" aria-controls="pane-b">2 · Frageprobe</button>
+  </nav>
 
-    <div class="bahnen" id="bahnen"></div>
-
-    <div class="notiz">
-      <strong>Nichts wird gespeichert.</strong> Dein Stand bleibt nur auf diesem Gerät, in diesem Browser. Keine Anmeldung, keine Namen, keine Auswertung für die Lehrkraft. Wenn du den Verlauf löschst, fängst du wieder bei null an.
+  <details class="card">
+    <summary><b>Spickzettel: der Satzgliederstern</b></summary>
+    <p class="muted">Das Prädikat steht in der Mitte. Von dort aus fragst du – die Frage verrät das Satzglied.</p>
+    <div class="stern">
+      <div><b>Prädikat</b>Was tut jemand? Was geschieht?</div>
+      <div><b>Subjekt</b>Wer oder was?</div>
+      <div><b>Akkusativobjekt</b>Wen oder was?</div>
+      <div><b>Dativobjekt</b>Wem?</div>
+      <div><b>Adverbiale der Zeit</b>Wann? Wie lange?</div>
+      <div><b>Adverbiale des Ortes</b>Wo? Wohin? Woher?</div>
+      <div><b>Adverbiale der Art</b>Wie? Auf welche Weise?</div>
+      <div><b>Adverbiale des Grundes</b>Warum? Weshalb?</div>
     </div>
+  </details>
 
-    <p class="fuss">Elsenztalschule Bammental · Deutsch Klasse 10 · Einheit 1 Sachtexte und Rechtschreibung</p>
+  <!-- Übung 1 -->
+  <section id="pane-a" role="tabpanel" aria-labelledby="tab-a">
+    <div class="card">
+      <div class="muted" id="a-progress"></div>
+      <p>Tippe ein Satzglied an und wähle unten, was es ist. Ein Prädikat aus zwei Teilen bekommt zweimal „Prädikat“.</p>
+      <div class="sentence" id="a-sentence"></div>
+      <div class="labels" id="a-labels"></div>
+      <div class="row">
+        <button class="btn primary" id="a-check">Prüfen</button>
+        <button class="btn ghost" id="a-next">Nächster Satz</button>
+        <span class="score" id="a-score"></span>
+      </div>
+      <div class="feedback" id="a-feedback" role="status" aria-live="polite"></div>
+    </div>
   </section>
 
-  <!-- AUFGABEN -->
-  <section id="spiel" hidden>
-    <div class="kopf">
-      <button class="zurueck" id="raus" type="button">← Übersicht</button>
-      <span class="zaehler" id="zaehler"></span>
+  <!-- Übung 2 -->
+  <section id="pane-b" role="tabpanel" aria-labelledby="tab-b" hidden>
+    <div class="card">
+      <div class="muted" id="b-progress"></div>
+      <p>Frag vom Prädikat aus. Tippe das Satzglied an, das auf die Frage antwortet.</p>
+      <div class="question" id="b-question"></div>
+      <div class="sentence" id="b-sentence"></div>
+      <div class="row">
+        <button class="btn ghost" id="b-next">Neue Frage</button>
+        <span class="score" id="b-score"></span>
+      </div>
+      <div class="feedback" id="b-feedback" role="status" aria-live="polite"></div>
     </div>
-    <div class="balken"><i id="fortschritt" style="width:0%"></i></div>
-    <div id="buehne"></div>
   </section>
+</main>
 
-</div>
+<footer>Deutsch Klasse 10 · Einheit 1 · Die Sätze stammen aus dem Thema der Einheit: Handyregeln an Schulen.</footer>
 
 <script>
-const BAHNEN = [
-  {
-    id:'satzglied', name:'Satzglieder finden', kurz:'Zehn Sätze, ein Teil ist markiert — frag vom Prädikat aus',
-    typ:'wahl',
-    items:[
-      {frage:'<em>Die Technik-AG</em> repariert das Mikrofon.', opts:['Subjekt','Akkusativobjekt','Adverbiale'], r:0,
-       warum:'Frage vom Prädikat aus: Wer oder was repariert? — Die Technik-AG. Das ist das Subjekt.'},
-      {frage:'Die AG repariert <em>das Mikrofon</em>.', opts:['Akkusativobjekt','Subjekt','Dativobjekt'], r:0,
-       warum:'Wen oder was repariert die AG? — das Mikrofon. Akkusativobjekt.'},
-      {frage:'Der Hausmeister bringt <em>den Klassen</em> die Kabel.', opts:['Dativobjekt','Akkusativobjekt','Subjekt'], r:0,
-       warum:'Wem bringt er die Kabel? — den Klassen. Das ist das Dativobjekt. „die Kabel“ wäre der Akkusativ.'},
-      {frage:'<em>Nach der Pause</em> beginnt die Probe.', opts:['Adverbiale der Zeit','Subjekt','Adverbiale des Ortes'], r:0,
-       warum:'Wann beginnt die Probe? — Nach der Pause. Im Vorfeld steht hier nicht das Subjekt.'},
-      {frage:'Die Redaktion trifft sich <em>im Medienraum</em>.', opts:['Adverbiale des Ortes','Adverbiale der Zeit','Dativobjekt'], r:0,
-       warum:'Wo trifft sie sich? — im Medienraum. Adverbiale Bestimmung des Ortes.'},
-      {frage:'Sie schneidet die Folge <em>mit einer App</em>.', opts:['Adverbiale des Mittels','Dativobjekt','Adverbiale der Art und Weise'], r:0,
-       warum:'Womit schneidet sie? — mit einer App. Das Mittel, nicht die Art und Weise.'},
-      {frage:'<em>Wegen des Sturms</em> fällt die Aufnahme aus.', opts:['Adverbiale des Grundes','Adverbiale der Zeit','Genitivobjekt'], r:0,
-       warum:'Warum fällt sie aus? — wegen des Sturms. Ein Genitivobjekt würde auf „Wessen?“ antworten.'},
-      {frage:'Mia <em>fängt</em> mit dem Schnitt <em>an</em>.', opts:['Prädikat, mehrteilig','Subjekt','Adverbiale'], r:0,
-       warum:'„fängt … an“ gehört zusammen: ein trennbares Verb bildet ein mehrteiliges Prädikat.'},
-      {frage:'Die Klasse arbeitet <em>konzentriert</em>.', opts:['Adverbiale der Art und Weise','Adverbiale des Mittels','Akkusativobjekt'], r:0,
-       warum:'Wie arbeitet die Klasse? — konzentriert. Das ist die Art und Weise.'},
-      {frage:'<em>Zwei Lehrkräfte</em> betreuen die AG.', opts:['Subjekt','Akkusativobjekt','Adverbiale'], r:0,
-       warum:'Wer oder was betreut? — zwei Lehrkräfte. Das ganze Satzglied, nicht nur „Lehrkräfte“.'},
-    ]
-  },
-  {
-    id:'recht', name:'Richtig schreiben', kurz:'Zehn Entscheidungen, jede mit einer Strategie dahinter',
-    typ:'wahl',
-    items:[
-      {frage:'Er hat sich die App <em>___</em>.', opts:['heruntergeladen','herunter geladen','Herunter geladen'], r:0,
-       warum:'„herunterladen“ ist ein Verb mit Vorsilbe und bleibt im Partizip ein Wort: heruntergeladen.'},
-      {frage:'Sie <em>___</em> ihr Passwort immer wieder.', opts:['vergisst','vergißt','vergist'], r:0,
-       warum:'Nach kurzem Vokal steht ss. Probe: Das i in „vergisst“ ist kurz — also Doppel-s.'},
-      {frage:'Das Video war wirklich <em>___</em>.', opts:['lehrreich','leerreich','lehrrreich'], r:0,
-       warum:'Ableiten: Das Wort kommt von „lehren“, nicht von „leer“. Die Wortfamilie klärt die Schreibung.'},
-      {frage:'Beim <em>___</em> vergeht die Zeit schnell.', opts:['Scrollen','scrollen','scrolen'], r:0,
-       warum:'„beim“ ist „bei dem“ — da steht ein Artikel davor. Also nominalisiertes Verb und groß.'},
-      {frage:'Mein <em>___</em> hat eine neue Folge.', opts:['Lieblingspodcast','Lieblings Podcast','lieblingspodcast'], r:0,
-       warum:'Zusammengesetzte Nomen schreibt man in einem Wort und groß: Lieblings + Podcast.'},
-      {frage:'Er <em>___</em> sich mein Ladekabel.', opts:['leiht','leit','leihd'], r:0,
-       warum:'Verlängern: „leihen“ — das h bleibt erhalten und wird mitgeschrieben.'},
-      {frage:'<em>___</em> du online bist, schreib mir.', opts:['Wenn','Wen','Wann'], r:0,
-       warum:'„wenn“ leitet eine Bedingung ein. „wen“ wäre eine Frage nach einer Person.'},
-      {frage:'Das Netz ist langsam — <em>___</em> nervt.', opts:['das','dass','daß'], r:0,
-       warum:'Probe: Du kannst „dieses“ einsetzen — „dieses nervt“. Dann ist es das Artikelwort mit einem s.'},
-      {frage:'Ich glaube, <em>___</em> der Akku leer ist.', opts:['dass','das','daß'], r:0,
-       warum:'Probe: „dieses“ passt hier nicht. Dann ist es die Konjunktion mit Doppel-s.'},
-      {frage:'Sie hat mir den Kanal <em>___</em>.', opts:['empfohlen','empfolen','empfohlenn'], r:0,
-       warum:'Ableiten: von „befehlen / empfehlen“ — das h steht auch im Partizip.'},
-    ]
-  },
-  {
-    id:'gram', name:'Sätze auseinandernehmen', kurz:'Acht Sätze, ein Teil ist markiert — was ist es?',
-    typ:'wahl',
-    items:[
-      {frage:'<em>Die Schülerinnen und Schüler</em> hören in der Pause Musik.', opts:['Subjekt','Prädikat','Adverbiale'], r:0,
-       warum:'Frage: Wer hört Musik? Die Antwort ist das Subjekt.'},
-      {frage:'Leonie <em>lädt</em> jeden Sonntag eine Folge <em>hoch</em>.', opts:['Prädikat','Objekt','Adverbiale'], r:0,
-       warum:'„lädt … hoch“ gehört zusammen: ein mehrteiliges Prädikat mit trennbarem Verb.'},
-      {frage:'<em>Jeden Sonntag</em> erscheint eine neue Folge.', opts:['Adverbiale der Zeit','Subjekt','Objekt'], r:0,
-       warum:'Frage: Wann? Die Antwort ist eine adverbiale Bestimmung der Zeit.'},
-      {frage:'Er schneidet <em>die Aufnahme</em> am Laptop.', opts:['Akkusativobjekt','Subjekt','Adverbiale'], r:0,
-       warum:'Frage: Wen oder was schneidet er? Die Antwort ist das Akkusativobjekt.'},
-      {frage:'<em>Im Forum</em> hängt der Aushang der Radio-AG.', opts:['Adverbiale des Ortes','Subjekt','Prädikat'], r:0,
-       warum:'Frage: Wo? Die Antwort ist eine adverbiale Bestimmung des Ortes.'},
-      {frage:'Sie <em>hat</em> das Mikrofon selbst <em>bezahlt</em>.', opts:['Prädikat im Perfekt','Prädikat im Präteritum','Prädikat im Futur I'], r:0,
-       warum:'„haben“ plus Partizip II ergibt das Perfekt. Satzklammer: hat … bezahlt.'},
-      {frage:'Morgen <em>wird</em> die AG eine Umfrage <em>starten</em>.', opts:['Futur I','Perfekt','Präsens'], r:0,
-       warum:'„werden“ plus Infinitiv ist Futur I — die Handlung liegt in der Zukunft.'},
-      {frage:'Welche Wortart ist <em>zuverlässig</em> in „Wer zuverlässig arbeitet …“?', opts:['Adjektiv','Adverb','Verb'], r:0,
-       warum:'Es beschreibt, wie gearbeitet wird, und ist steigerbar: zuverlässiger, am zuverlässigsten. Also ein Adjektiv.'},
-    ]
-  },
-  {
-    id:'lesen', name:'Schnell erfassen', kurz:'Drei kurze Texte, je drei Fragen — such gezielt',
-    typ:'text',
-    bloecke:[
-      {
-        text:`Ab November sendet die Schülerradio-AG jeden Mittwoch in der großen Pause. Gesendet wird aus Raum 112, zu hören ist das Programm über die Lautsprecher im Forum und im C-Bau. Wer mitmachen will, braucht keine Vorkenntnisse: Die AG trifft sich donnerstags um 13.30 Uhr. Gesucht werden vor allem Leute für Technik und Schnitt. Anmeldung bis zum 24. Oktober bei Frau Berger im Sekretariat.`,
-        quelle:'Aushang im Forum',
-        items:[
-          {frage:'Wann wird gesendet?', opts:['Mittwochs in der großen Pause','Donnerstags um 13.30 Uhr','Täglich in der Mittagspause'], r:0,
-           warum:'Der erste Satz nennt den Sendetermin. Donnerstag ist der Termin der AG-Treffen — eine typische Falle.'},
-          {frage:'Wen sucht die AG vor allem?', opts:['Leute für Technik und Schnitt','Leute mit Radioerfahrung','Leute, die moderieren wollen'], r:0,
-           warum:'Steht wörtlich im vorletzten Satz. „Vor allem“ markiert die Hauptsache.'},
-          {frage:'Was steht <em>nicht</em> im Text?', opts:['Wie lange eine Sendung dauert','Wo gesendet wird','Bis wann man sich anmelden kann'], r:0,
-           warum:'Ort (Raum 112) und Frist (24. Oktober) stehen da. Zur Sendedauer sagt der Text nichts.'},
-        ]
-      },
-      {
-        text:`Fast jedes Smartphone zeigt inzwischen an, wie lange es am Tag benutzt wurde. Die Funktion heißt Bildschirmzeit und zählt mit, welche App wie viele Minuten lief. Der Wert sagt allerdings wenig darüber aus, was in dieser Zeit passiert ist: Eine Stunde Videotelefonat mit der Großmutter und eine Stunde Kurzvideos stehen in derselben Statistik. Wer etwas ändern will, schaut deshalb besser auf die einzelnen Apps als auf die Gesamtzahl.`,
-        quelle:'Infotext aus einer Jugendzeitschrift',
-        items:[
-          {frage:'Wie heißt die Funktion?', opts:['Bildschirmzeit','Appzeit','Nutzungsdauer'], r:0,
-           warum:'Der Name steht im zweiten Satz und ist dort eigens eingeführt.'},
-          {frage:'Worauf soll man laut Text besser schauen?', opts:['Auf die einzelnen Apps','Auf die Gesamtzahl','Auf den Wochendurchschnitt'], r:0,
-           warum:'Der letzte Satz zieht die Folgerung: einzelne Apps statt Gesamtzahl.'},
-          {frage:'Welche Aussage passt zum Text?', opts:['Die Gesamtzahl sagt nichts darüber, was man getan hat','Die Gesamtzahl zeigt, ob die Zeit sinnvoll war','Telefonieren zählt nicht zur Bildschirmzeit'], r:0,
-           warum:'Genau das ist das Beispiel mit dem Videotelefonat: gleiche Minuten, ganz verschiedene Tätigkeiten.'},
-        ]
-      },
-      {
-        text:`Drei Fragen an Leonie Haas, 16, die seit einem Jahr einen Podcast über Serien macht.
+const L = {
+  S:'Subjekt', P:'Prädikat', A:'Akkusativobjekt', D:'Dativobjekt',
+  Z:'Adverbiale der Zeit', O:'Adverbiale des Ortes', W:'Adverbiale der Art', G:'Adverbiale des Grundes'
+};
+const Q = { S:'Wer oder was?', A:'Wen oder was?', D:'Wem?', Z:'Wann?', O:'Wo?', W:'Wie? Auf welche Weise?', G:'Warum?' };
+const SENTENCES = [
+  [['Die Schulleiterin','S'],['erklärt','P'],['den Eltern','D'],['die neue Regel','A'],['am Elternabend','Z'],['.','']],
+  [['In der Pause','Z'],['spielen','P'],['viele Kinder','S'],['Tischtennis','A'],['.','']],
+  [['Jonas','S'],['schickt','P'],['dem Betrieb','D'],['seine Bewerbung','A'],['per Mail','W'],['.','']],
+  [['Wegen der neuen Regel','G'],['bleibt','P'],['das Handy','S'],['im Schrank','O'],['.','']],
+  [['Die Zehntklässler','S'],['dürfen','P'],['ihr Handy','A'],['in der Pause','Z'],['benutzen','P'],['.','']],
+  [['Lea','S'],['schreibt','P'],['ihrer Klasse','D'],['eine Nachricht','A'],['.','']],
+  [['Morgens','Z'],['stehen','P'],['die Fünftklässler','S'],['vor dem Sekretariat','O'],['.','']],
+  [['Viele Jugendliche','S'],['legen','P'],['ihr Handy','A'],['aus Gewohnheit','G'],['spät','Z'],['weg','P'],['.','']],
+  [['Die Elternvertreterin','S'],['widerspricht','P'],['dem Schulleiter','D'],['entschieden','W'],['.','']],
+  [['Das Kultusministerium','S'],['hat','P'],['den Schulen','D'],['im August','Z'],['neue Regeln','A'],['angekündigt','P'],['.','']],
+  [['Im Handy-Hotel','O'],['hat','P'],['jede Klasse','S'],['ein eigenes Fach','A'],['.','']],
+  [['Die Gesamtlehrerkonferenz','S'],['entscheidet','P'],['im Frühjahr','Z'],['über die Ausnahme','']]
+].filter(s => s.every(c => c[1] !== '' || c[0] === '.'));
 
-Wie lange brauchst du für eine Folge?
-Aufnehmen eine Stunde. Schneiden drei bis vier.
+const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+const $ = id => document.getElementById(id);
 
-Was war am Anfang am schwersten?
-Mir selbst zuzuhören. Das legt sich.
+/* ---------- Tabs ---------- */
+document.querySelectorAll('[role=tab]').forEach(t => t.addEventListener('click', () => {
+  document.querySelectorAll('[role=tab]').forEach(x => x.setAttribute('aria-selected', x === t));
+  $('pane-a').hidden = t.id !== 'tab-a'; $('pane-b').hidden = t.id !== 'tab-b';
+}));
 
-Was rätst du anderen?
-Fangt mit dem Handy an. Ein Mikrofon könnt ihr immer noch kaufen.`,
-        quelle:'Kurzinterview, Schülerzeitung',
-        items:[
-          {frage:'Wie lange dauert das Schneiden?', opts:['Drei bis vier Stunden','Eine Stunde','Ein ganzer Nachmittag'], r:0,
-           warum:'Die Stunde gehört zum Aufnehmen. Zwei Zahlen im selben Satz — genau hinsehen.'},
-          {frage:'Was war für sie am Anfang am schwersten?', opts:['Die eigene Stimme zu hören','Die Technik zu verstehen','Themen zu finden'], r:0,
-           warum:'„Mir selbst zuzuhören“ — sie antwortet knapp und sehr direkt.'},
-          {frage:'Was rät sie anderen?', opts:['Einfach mit dem Handy anfangen','Erst ein Mikrofon kaufen','Zu zweit starten'], r:0,
-           warum:'Ihr Rat ist das Gegenteil von Aufrüsten: erst anfangen, Ausrüstung später.'},
-        ]
-      }
-    ]
-  },
-  {
-    id:'operator', name:'Was verlangt das Verb?', kurz:'Acht Prüfungsoperatoren — und was sie von dir wollen',
-    typ:'wahl',
-    items:[
-      {frage:'<em>zuordnen</em>', opts:['Eine Aussage mit der Textstelle verbinden, mit Zeilenangabe','Mit eigenen Worten ausführen','Eine eigene Meinung begründen'], r:0,
-       warum:'Zuordnen heißt: Stelle benennen. Kein Erklären, kein Bewerten — aber immer die Zeile.'},
-      {frage:'<em>nennen</em>', opts:['Aufzählen, ohne Erklärung','Ausführlich beschreiben','Belegen und erklären'], r:0,
-       warum:'Nennen ist der kürzeste Operator: eine Liste, mehr nicht.'},
-      {frage:'<em>belegen</em>', opts:['Eine Behauptung mit einer Textstelle stützen','Die eigene Meinung sagen','Den Text zusammenfassen'], r:0,
-       warum:'Belegen verlangt die Textstelle plus Zeilenangabe. Ohne Zeile zählt der Beleg nicht.'},
-      {frage:'<em>erläutern</em>', opts:['Erklären und mit einem Beispiel verdeutlichen','Nur aufzählen','Nur zitieren'], r:0,
-       warum:'Erläutern geht über erklären hinaus: Es verlangt zusätzlich ein Beispiel oder eine Verdeutlichung.'},
-      {frage:'<em>beschreiben</em>', opts:['Mit eigenen Worten genau wiedergeben','Bewerten','Eine Zeilenangabe machen'], r:0,
-       warum:'Beschreiben heißt: in eigenen Worten, sachlich, ohne Wertung.'},
-      {frage:'<em>begründen</em>', opts:['Sagen, warum etwas so ist','Sagen, dass es so ist','Eine Stelle heraussuchen'], r:0,
-       warum:'Begründen fragt nach dem Warum. Eine Behauptung allein reicht nicht.'},
-      {frage:'<em>zusammenfassen</em>', opts:['Das Wichtigste knapp und sachlich wiedergeben','Alles wiederholen','Die eigene Meinung ergänzen'], r:0,
-       warum:'Zusammenfassen heißt auswählen: nur das Wichtigste, in eigenen Worten, ohne Wertung.'},
-      {frage:'<em>vergleichen</em>', opts:['Gemeinsamkeiten und Unterschiede herausarbeiten','Eins von beiden beschreiben','Sagen, was besser ist'], r:0,
-       warum:'Vergleichen braucht beides: Gemeinsamkeiten und Unterschiede. Welches besser ist, wäre bewerten.'},
-    ]
-  }
-];
-
-/* ---------- Fragenliste je Bahn ---------- */
-function fragenVon(b){
-  if(b.typ==='text'){
-    const out=[];
-    b.bloecke.forEach(bl=>bl.items.forEach(it=>out.push({...it, text:bl.text, quelle:bl.quelle})));
-    return out;
-  }
-  return b.items;
-}
-BAHNEN.forEach(b=>b.fragen=fragenVon(b));
-
-/* ---------- Stand ---------- */
-const KEY='ets-lernband-d10-w1';
-let stand={};
-try{ stand=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ stand={}; }
-function merken(){ try{ localStorage.setItem(KEY, JSON.stringify(stand)); }catch(e){} }
-
-/* ---------- Übersicht ---------- */
-const start=document.getElementById('start');
-const spiel=document.getElementById('spiel');
-const buehne=document.getElementById('buehne');
-const zaehlerEl=document.getElementById('zaehler');
-const fortschrittEl=document.getElementById('fortschritt');
-
-function ringSVG(anteil){
-  const u=2*Math.PI*19;
-  return `<svg viewBox="0 0 46 46" width="46" height="46" aria-hidden="true">
-    <circle cx="23" cy="23" r="19" fill="none" stroke="var(--linie)" stroke-width="4"></circle>
-    <circle cx="23" cy="23" r="19" fill="none" stroke="var(--hell)" stroke-width="4"
-      stroke-linecap="round" stroke-dasharray="${u}" stroke-dashoffset="${u*(1-anteil)}"></circle>
-  </svg>`;
-}
-
-function zeichneUebersicht(){
-  const ziel=document.getElementById('bahnen');
-  ziel.innerHTML='';
-  BAHNEN.forEach(b=>{
-    const erg=stand[b.id];
-    const n=b.fragen.length;
-    const anteil=erg? erg.punkte/n : 0;
-    const el=document.createElement('button');
-    el.className='bahn'; el.type='button';
-    el.innerHTML=`
-      <span class="ring">${ringSVG(anteil)}<span>${erg? erg.punkte+'/'+n : n}</span></span>
-      <span><h2>${b.name}</h2><p>${b.kurz}</p></span>
-      <span class="pfeil" aria-hidden="true">›</span>`;
-    el.setAttribute('aria-label', b.name+' — '+b.kurz);
-    el.addEventListener('click',()=>oeffne(b.id));
-    ziel.appendChild(el);
-  });
-}
-
-/* ---------- Spielablauf ---------- */
-let aktiv=null, index=0, punkte=0;
-
-function oeffne(id){
-  aktiv=BAHNEN.find(b=>b.id===id);
-  index=0; punkte=0;
-  start.hidden=true; spiel.hidden=false;
-  window.scrollTo(0,0);
-  zeigeFrage();
-}
-
-function zurueckZurUebersicht(){
-  spiel.hidden=true; start.hidden=false;
-  zeichneUebersicht();
-  window.scrollTo(0,0);
-}
-document.getElementById('raus').addEventListener('click', zurueckZurUebersicht);
-
-function zeigeFrage(){
-  const f=aktiv.fragen[index];
-  const n=aktiv.fragen.length;
-  zaehlerEl.textContent=`${index+1} von ${n}`;
-  fortschrittEl.style.width=(index/n*100)+'%';
-
-  const vorher=index>0? aktiv.fragen[index-1] : null;
-  const neuerText=f.text && (!vorher || vorher.text!==f.text);
-
-  buehne.innerHTML=`
-    ${f.text? `<div class="karte"${neuerText?'':' hidden'}>
-        <div class="lesetext">${f.text}</div>
-        <p class="quelle">${f.quelle||''}</p>
-      </div>`:''}
-    <div class="karte">
-      <p class="frage">${f.frage}</p>
-      <div class="optionen" id="optionen"></div>
-      <div id="warum"></div>
-    </div>`;
-
-  // Antworten mischen, richtige Position merken
-  const paare=f.opts.map((t,i)=>({t, richtig:i===f.r}));
-  for(let i=paare.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [paare[i],paare[j]]=[paare[j],paare[i]]; }
-
-  const box=document.getElementById('optionen');
-  const buchstaben=['A','B','C','D'];
-  paare.forEach((p,i)=>{
-    const b=document.createElement('button');
-    b.className='opt'; b.type='button';
-    b.innerHTML=`<b>${buchstaben[i]}</b><span>${p.t}</span>`;
-    b.addEventListener('click',()=>antworte(b,p.richtig,paare,f));
+/* ---------- Übung 1: bestimmen ---------- */
+let orderA = shuffle(SENTENCES.keys ? [...SENTENCES.keys()] : SENTENCES.map((_, i) => i)), posA = 0, active = null, choice = {}, scoreA = { right: 0, total: 0 }, checked = false;
+const labelBox = $('a-labels');
+Object.entries(L).forEach(([k, v]) => {
+  const b = document.createElement('button'); b.textContent = v; b.type = 'button';
+  b.addEventListener('click', () => { if (active === null || checked) return; choice[active] = k; renderA(); const next = nextOpen(); if (next !== null) { active = next; renderA(); } });
+  labelBox.appendChild(b);
+});
+function current() { return SENTENCES[orderA[posA]]; }
+function nextOpen() { const s = current(); for (let i = 0; i < s.length; i++) if (s[i][1] && !choice[i]) return i; return null; }
+function renderA() {
+  const s = current(), box = $('a-sentence'); box.innerHTML = '';
+  s.forEach(([txt, lab], i) => {
+    if (!lab) { box.lastChild && (box.lastChild.querySelector('.t').textContent += txt); return; }
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'chunk';
+    if (i === active && !checked) b.classList.add('active');
+    if (checked) b.classList.add(choice[i] === lab ? 'ok' : 'bad');
+    b.innerHTML = `<span class="t"></span><small></small>`;
+    b.querySelector('.t').textContent = txt;
+    b.querySelector('small').textContent = checked && choice[i] !== lab ? `richtig: ${L[lab]}` : (choice[i] ? L[choice[i]] : '');
+    b.addEventListener('click', () => { if (checked) return; active = i; renderA(); });
     box.appendChild(b);
   });
+  $('a-progress').textContent = `Satz ${posA + 1} von ${SENTENCES.length}`;
+  $('a-score').textContent = scoreA.total ? `${scoreA.right} von ${scoreA.total} richtig` : '';
 }
+function startA() { choice = {}; checked = false; active = nextOpen(); $('a-feedback').className = 'feedback'; renderA(); }
+$('a-check').addEventListener('click', () => {
+  if (checked) return;
+  const s = current(); const open = nextOpen();
+  if (open !== null) { const f = $('a-feedback'); f.textContent = 'Bestimme erst alle Satzglieder.'; f.className = 'feedback show warn'; active = open; renderA(); return; }
+  checked = true; let r = 0, n = 0;
+  s.forEach(([, lab], i) => { if (lab) { n++; if (choice[i] === lab) r++; } });
+  scoreA.right += r; scoreA.total += n;
+  const f = $('a-feedback');
+  if (r === n) { f.textContent = 'Alles richtig – stark!'; f.className = 'feedback show good'; }
+  else { f.textContent = `${r} von ${n} richtig. Unter den roten Kästen steht die Lösung. Tipp: Frag vom Prädikat aus.`; f.className = 'feedback show warn'; }
+  renderA();
+});
+$('a-next').addEventListener('click', () => { posA = (posA + 1) % SENTENCES.length; if (posA === 0) orderA = shuffle(orderA); startA(); });
+startA();
 
-function antworte(knopf, richtig, paare, f){
-  const alle=[...document.querySelectorAll('.opt')];
-  alle.forEach((b,i)=>{
-    b.disabled=true;
-    if(paare[i].richtig) b.classList.add('richtig');
+/* ---------- Übung 2: Frageprobe ---------- */
+let scoreB = { right: 0, total: 0 }, task = null, answered = false;
+function newTask() {
+  const s = SENTENCES[Math.floor(Math.random() * SENTENCES.length)];
+  const cands = s.map((c, i) => [c, i]).filter(([c]) => c[1] && c[1] !== 'P');
+  const labelsInSentence = cands.map(([c]) => c[1]);
+  const pick = cands.filter(([c]) => labelsInSentence.filter(l => l === c[1]).length === 1); // eindeutige Frage
+  const [[, lab], idx] = pick[Math.floor(Math.random() * pick.length)];
+  const verb = s.filter(c => c[1] === 'P').map(c => c[0]).join(' … ');
+  task = { s, lab, idx }; answered = false;
+  $('b-question').textContent = `${Q[lab]}  (Prädikat: ${verb})`;
+  $('b-feedback').className = 'feedback';
+  renderB();
+}
+function renderB(clicked) {
+  const box = $('b-sentence'); box.innerHTML = '';
+  task.s.forEach(([txt, lab], i) => {
+    if (!lab) { box.lastChild && (box.lastChild.querySelector('.t').textContent += txt); return; }
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'chunk';
+    b.innerHTML = '<span class="t"></span><small></small>'; b.querySelector('.t').textContent = txt;
+    if (answered && i === task.idx) { b.classList.add('ok'); b.querySelector('small').textContent = L[lab]; }
+    if (answered && i === clicked && i !== task.idx) { b.classList.add('bad'); b.querySelector('small').textContent = L[lab]; }
+    b.addEventListener('click', () => {
+      if (answered) return; answered = true; scoreB.total++;
+      const f = $('b-feedback');
+      if (i === task.idx) { scoreB.right++; f.textContent = `Richtig: „${txt}“ ist ${L[lab]}.`; f.className = 'feedback show good'; }
+      else { f.textContent = `Nicht ganz: „${txt}“ ist ${lab === 'P' ? 'das Prädikat' : L[lab]}. Gesucht war ${L[task.lab]}.`; f.className = 'feedback show warn'; }
+      renderB(i);
+    });
+    box.appendChild(b);
   });
-  if(!richtig) knopf.classList.add('daneben');
-  else punkte++;
-
-  const w=document.getElementById('warum');
-  w.innerHTML=`<div class="warum"><strong>${richtig?'Stimmt.':'Noch nicht.'}</strong>${f.warum}</div>
-    <button class="weiter" type="button" id="weiter">${index+1<aktiv.fragen.length?'Weiter':'Auswertung'}</button>`;
-  document.getElementById('weiter').addEventListener('click',()=>{
-    index++;
-    if(index<aktiv.fragen.length){ zeigeFrage(); window.scrollTo(0,0); }
-    else zeigeEnde();
-  });
-  document.getElementById('weiter').focus();
+  $('b-score').textContent = scoreB.total ? `${scoreB.right} von ${scoreB.total} richtig` : '';
+  $('b-progress').textContent = 'Frageprobe';
 }
-
-function zeigeEnde(){
-  const n=aktiv.fragen.length;
-  fortschrittEl.style.width='100%';
-  zaehlerEl.textContent='fertig';
-  const alt=stand[aktiv.id];
-  if(!alt || punkte>alt.punkte){ stand[aktiv.id]={punkte}; merken(); }
-
-  let titel, text;
-  if(punkte===n){ titel='Alles richtig.'; text='Diese Bahn sitzt. Nimm dir eine andere vor.'; }
-  else if(punkte>=n-2){ titel='Fast alles.'; text='Schau dir die zwei Begründungen noch einmal an, dann sitzt es.'; }
-  else if(punkte>=n/2){ titel='Solide Hälfte.'; text='Ein zweiter Durchgang lohnt sich — die Reihenfolge der Antworten wechselt.'; }
-  else { titel='Das war zäh.'; text='Mach die Bahn gleich noch einmal. Beim zweiten Mal bleibt deutlich mehr hängen.'; }
-
-  buehne.innerHTML=`
-    <div class="karte ende">
-      <div class="punkte">${punkte}</div>
-      <div class="von">von ${n} richtig</div>
-      <h2>${titel}</h2>
-      <p>${text}</p>
-      <div class="endeknoepfe">
-        <button class="weiter" type="button" id="nochmal">Bahn noch einmal</button>
-        <button class="zweit" type="button" id="zurueck2">Zur Übersicht</button>
-      </div>
-    </div>`;
-  document.getElementById('nochmal').addEventListener('click',()=>oeffne(aktiv.id));
-  document.getElementById('zurueck2').addEventListener('click', zurueckZurUebersicht);
-  window.scrollTo(0,0);
-}
-
-zeichneUebersicht();
+$('b-next').addEventListener('click', newTask);
+newTask();
 </script>
-
 </body>
 </html>
