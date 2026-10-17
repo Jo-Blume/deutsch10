@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsch 10 · Woche 2 · Üben</title>
+<style>
+  :root{
+    --green:#1E5631; --green2:#2C6C3F; --lime:#8CC63F; --light:#F1F6EE; --orange:#E07B39;
+    --ink:#1A1A1A; --grey:#5F6B60; --line:#C9DCC2; --rose:#F6EDE6; --red:#B3261E; --bg:#FFFFFF; --cream:#FFFDF5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.45}
+  header{background:var(--green);color:#fff;padding:20px 16px 18px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+  header .wrap{padding:0}
+  .kicker{color:var(--lime);font-size:13px;font-weight:bold;letter-spacing:.06em;text-transform:uppercase}
+  h1{margin:4px 0 2px;font-size:26px}
+  header p{margin:0;color:#D6E6D0;font-size:14px}
+  nav{display:flex;gap:6px;margin:18px 0 6px;flex-wrap:wrap}
+  nav button{flex:1 1 120px;border:0;border-radius:999px;padding:10px 12px;font:inherit;font-weight:bold;font-size:15px;cursor:pointer;background:var(--light);color:var(--green);min-height:44px}
+  nav button[aria-selected="true"]{background:var(--green);color:#fff}
+  .card{background:var(--light);border-radius:12px;padding:16px;margin:14px 0}
+  .muted{color:var(--grey);font-size:14px}
+  .prompt{font-size:19px;margin:10px 0 4px}
+  .prompt mark{background:#F5D2BB;color:var(--ink);padding:1px 4px;border-radius:4px;font-weight:bold}
+  .prompt u{text-decoration-thickness:2px;text-underline-offset:3px;text-decoration-color:var(--orange);font-weight:bold}
+  .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:6px;margin-top:12px}
+  .opts.wide{grid-template-columns:1fr}
+  .opts button{border:1px solid var(--green);background:#fff;color:var(--ink);border-radius:8px;padding:10px 12px;font:inherit;font-size:15px;cursor:pointer;min-height:44px;text-align:left}
+  .opts button:hover,.opts button:focus-visible{background:#fff8f2}
+  .opts button.ok{background:#E3F0DC;border-color:var(--green)}
+  .opts button.bad{background:#FBE9E7;border-color:var(--red)}
+  .opts button:disabled{cursor:default}
+  .comma-line{font-size:19px;line-height:2.3;margin:10px 0}
+  .slot{display:inline-block;width:20px;height:30px;vertical-align:middle;margin:0 1px;border:0;border-bottom:2px dotted var(--line);background:transparent;cursor:pointer;font:inherit;font-size:22px;font-weight:bold;color:var(--orange);padding:0;line-height:24px}
+  .slot.on{border-bottom-color:var(--orange)}
+  .slot.ok{color:var(--green);border-bottom-color:var(--green)}
+  .slot.bad{color:var(--red);border-bottom-color:var(--red)}
+  .slot.miss{border-bottom:2px solid var(--red)}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+  .btn{border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:bold;cursor:pointer;min-height:44px}
+  .btn.primary{background:var(--green);color:#fff}
+  .btn.ghost{background:#fff;color:var(--green);border:1px solid var(--green)}
+  .feedback{margin-top:12px;padding:10px 12px;border-radius:8px;font-size:15px;display:none}
+  .feedback.show{display:block}
+  .feedback.good{background:#E3F0DC;color:var(--green)}
+  .feedback.warn{background:var(--rose);color:#7A3A12}
+  .score{margin-left:auto;font-weight:bold;color:var(--green)}
+  .text{background:var(--cream);border:1px solid #D8CFB8;border-radius:10px;padding:12px 12px 12px 8px;font-size:16px;margin:10px 0}
+  .text ol{margin:0;padding-left:34px}
+  .text li{padding-left:6px}
+  .text li::marker{color:#9A9A9A;font-size:12px}
+  .text li.p{margin-top:8px}
+  .text h3{margin:0 0 2px 40px;font-size:18px}
+  .text .src{margin:0 0 8px 40px;font-size:12px;color:var(--grey)}
+  details.card summary{cursor:pointer;font-weight:bold;color:var(--green)}
+  .tip{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:8px}
+  .tip div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px}
+  .tip b{display:block;color:var(--green)}
+  footer{color:var(--grey);font-size:12px;padding:18px 16px 28px;text-align:center}
+  [hidden]{display:none!important}
+  @media (prefers-reduced-motion:no-preference){.opts button,.slot{transition:background .15s,border-color .15s}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kicker">Deutsch 10 · Woche 2 · freiwillig</div>
+    <h1>Üben, üben, üben</h1>
+    <p>Elsenztalschule Bammental · sofortige Rückmeldung · so oft du willst</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav role="tablist" aria-label="Übungen">
+    <button role="tab" aria-selected="true" data-pane="wa">Wortarten</button>
+    <button role="tab" aria-selected="false" data-pane="sg">Satzglieder</button>
+    <button role="tab" aria-selected="false" data-pane="rs">Rechtschreibung</button>
+    <button role="tab" aria-selected="false" data-pane="ko">Komma</button>
+    <button role="tab" aria-selected="false" data-pane="le">Lesen</button>
+  </nav>
+
+  <section id="pane-wa" role="tabpanel">
+    <details class="card"><summary>Spickzettel: Wortarten</summary>
+      <div class="tip">
+        <div><b>Nomen</b>Artikelprobe: der, die, das, ein. Großschreibung.</div>
+        <div><b>Verb</b>lässt sich konjugieren: ich lese, du liest.</div>
+        <div><b>Adjektiv</b>lässt sich steigern: spät, später, am spätesten.</div>
+        <div><b>Artikel</b>Begleiter: der, die, das, ein, eine – mein, ihr (Possessivartikel).</div>
+        <div><b>Pronomen</b>steht für ein Nomen: ich, sie, es, man.</div>
+        <div><b>Präposition</b>Verhältniswort: nach, in, auf, wegen.</div>
+        <div><b>Konjunktion</b>verbindet: und, aber – weil, obwohl, dass (Nebensatz).</div>
+        <div><b>Adverb</b>Umstand: heute, nachts, oft, dort.</div>
+      </div>
+    </details>
+    <div class="card" id="wa"></div>
+  </section>
+
+  <section id="pane-sg" role="tabpanel" hidden>
+    <details class="card"><summary>Spickzettel: der Satzgliederstern</summary>
+      <div class="tip">
+        <div><b>Subjekt</b>Wer oder was?</div><div><b>Prädikat</b>Was tut jemand?</div>
+        <div><b>Akkusativobjekt</b>Wen oder was?</div><div><b>Dativobjekt</b>Wem?</div>
+        <div><b>Adverbiale der Zeit</b>Wann? Wie lange?</div><div><b>Adverbiale des Ortes</b>Wo? Wohin?</div>
+        <div><b>Adverbiale des Grundes</b>Warum?</div><div><b>Adverbiale der Art</b>Wie?</div>
+      </div>
+    </details>
+    <div class="card" id="sg"></div>
+  </section>
+
+  <section id="pane-rs" role="tabpanel" hidden>
+    <details class="card"><summary>Spickzettel: Rechtschreibstrategien</summary>
+      <div class="tip">
+        <div><b>Verlängern</b>Tag → Tage: Jetzt hörst du das g.</div>
+        <div><b>Ableiten</b>häufig → Haufen: ä/äu kommt von a/au.</div>
+        <div><b>Zerlegen</b>Pausen|hof: Teile einzeln prüfen.</div>
+        <div><b>Großschreibung</b>Artikel davor? Endung -ung, -heit, -keit? Dann groß.</div>
+      </div>
+    </details>
+    <div class="card" id="rs"></div>
+  </section>
+
+  <section id="pane-ko" role="tabpanel" hidden>
+    <details class="card"><summary>Spickzettel: Kommaregeln</summary>
+      <div class="tip">
+        <div><b>Nebensatz</b>weil, obwohl, dass, wenn, wer … – das Verb steht am Ende. Komma davor oder danach.</div>
+        <div><b>Aufzählung</b>Komma zwischen den Teilen – aber nicht vor „und“ oder „oder“.</div>
+        <div><b>Gegensatz</b>Vor „aber“, „sondern“, „doch“ steht ein Komma.</div>
+      </div>
+    </details>
+    <div class="card" id="ko"></div>
+  </section>
+
+  <section id="pane-le" role="tabpanel" hidden>
+    <div class="text" id="le-text"></div>
+    <div class="card" id="le"></div>
+  </section>
+</main>
+
+<footer>Deutsch Klasse 10 · Elsenztalschule Bammental · Woche 2 · Es werden keine Daten gespeichert.</footer>
+
+<script>
+// ---------------- Daten ----------------
+const WA_OPTS = ['Nomen','Verb','Adjektiv','Artikel','Pronomen','Präposition','Konjunktion','Adverb'];
+const WA = [
+  {s:'Rund 30 Prozent legen ihr Handy [nachts] zu spät weg.', a:'Adverb', w:'„nachts“ ist eine Zeitangabe ohne Artikel – ein Adverb, deshalb klein.'},
+  {s:'Viele schauen aufs Handy, [obwohl] sie lernen wollen.', a:'Konjunktion', w:'„obwohl“ leitet einen Nebensatz ein – eine (unterordnende) Konjunktion.'},
+  {s:'Die [Jugendlichen] geben ihre Handys im Sekretariat ab.', a:'Nomen', w:'Artikelprobe: die Jugendlichen. Ein nominalisiertes Adjektiv ist ein Nomen.'},
+  {s:'Die Schülerzeitung hat einen [deutlichen] Kommentar geschrieben.', a:'Adjektiv', w:'Steigerung: deutlich, deutlicher – ein Adjektiv (hier als Attribut).'},
+  {s:'Erst [nach] der letzten Stunde gibt es die Geräte zurück.', a:'Präposition', w:'„nach“ steht vor „der letzten Stunde“ und bestimmt den Fall – eine Präposition.'},
+  {s:'Selin will die Aktion einmal im Monat [wiederholen].', a:'Verb', w:'Konjugieren: ich wiederhole, du wiederholst – ein Verb (hier im Infinitiv).'},
+  {s:'Lina sagt, [sie] bekomme in einer Minute mit, was los ist.', a:'Pronomen', w:'„sie“ steht für Lina – ein Personalpronomen.'},
+  {s:'Die Zehntklässler dürfen [ihr] Handy behalten.', a:'Artikel', w:'„ihr“ begleitet das Nomen „Handy“ – ein Possessivartikel.'},
+  {s:'Die Programme liefern [manchmal] falsche Angaben.', a:'Adverb', w:'„manchmal“ sagt, wie oft – ein Adverb.'},
+  {s:'Das [Lesen] auf Papier ist für viele entspannter.', a:'Nomen', w:'„das Lesen“: Mit Artikel wird das Verb zum Nomen – deshalb groß.'},
+  {s:'Viele Clips sind stark verkürzt, [und] die Quelle ist oft unklar.', a:'Konjunktion', w:'„und“ verbindet zwei Hauptsätze – eine (nebenordnende) Konjunktion.'},
+  {s:'In der Pause spielten [die] Jugendlichen Karten.', a:'Artikel', w:'„die“ begleitet das Nomen „Jugendlichen“ – ein bestimmter Artikel.'},
+];
+const SG_OPTS = ['Subjekt','Prädikat','Akkusativobjekt','Dativobjekt','Adverbiale der Zeit','Adverbiale des Ortes','Adverbiale des Grundes','Adverbiale der Art'];
+const SG = [
+  {s:'[Die Schülerzeitung] hat den Verantwortlichen einen Kommentar geschrieben.', a:'Subjekt', w:'Wer hat geschrieben? Die Schülerzeitung.'},
+  {s:'Die Schülerzeitung hat [den Verantwortlichen im Ministerium] einen Kommentar geschrieben.', a:'Dativobjekt', w:'Wem hat sie geschrieben? Den Verantwortlichen im Ministerium. „im Ministerium“ ist ein Attribut und gehört dazu.'},
+  {s:'Die Schülerzeitung hat den Verantwortlichen [einen deutlichen Kommentar] geschrieben.', a:'Akkusativobjekt', w:'Wen oder was hat sie geschrieben? Einen deutlichen Kommentar.'},
+  {s:'Rund 30 Prozent der Jugendlichen legen ihr Handy [nachts] zu spät weg.', a:'Adverbiale der Zeit', w:'Wann legen sie es weg? Nachts.'},
+  {s:'Die Jugendlichen [spielten] in der Pause Karten.', a:'Prädikat', w:'Was tun die Jugendlichen? Sie spielten – das Prädikat.'},
+  {s:'Am Ende hängen sie die Ergebnisse [im Schulhaus] aus.', a:'Adverbiale des Ortes', w:'Wo hängen sie die Ergebnisse aus? Im Schulhaus.'},
+  {s:'[Wegen der vielen Streitfälle] führte die Schule die Handyabgabe ein.', a:'Adverbiale des Grundes', w:'Warum führte die Schule sie ein? Wegen der vielen Streitfälle.'},
+  {s:'Emre prüft die Angaben [sehr genau] nach.', a:'Adverbiale der Art', w:'Wie prüft Emre nach? Sehr genau.'},
+  {s:'Die Lehrerin erklärt [den Fünftklässlern] die neuen Regeln.', a:'Dativobjekt', w:'Wem erklärt sie die Regeln? Den Fünftklässlern.'},
+  {s:'[Viele Clips] sind stark verkürzt.', a:'Subjekt', w:'Wer oder was ist verkürzt? Viele Clips.'},
+];
+const RS = [
+  {q:'Am nächsten Morgen fällt das Aufstehen schwer. Welche Schreibung stimmt?', o:['das aufstehen','das Aufstehen','das Aufsteen'], a:1, w:'Großschreibung: „das“ macht das Verb zum Nomen.'},
+  {q:'Er geht über den Pausen__ .', o:['Pausenhof','Pausenhoff','Pausenhov'], a:0, w:'Zerlegen: Pausen | Hof. Dann Verlängern: die Höfe → f.'},
+  {q:'Sie hat ihr Handy frei__ abgegeben.', o:['freiwillich','freiwillig','freiwilick'], a:1, w:'Verlängern: freiwillige → g.'},
+  {q:'Er l__sst das Handy in der Tasche.', o:['lässt','lest','lässst'], a:0, w:'Ableiten: lassen → ä. Und ss bleibt nach kurzem Vokal.'},
+  {q:'Welches Wort ist richtig geschrieben?', o:['heufig','häufig','häuffig'], a:1, w:'Ableiten: häufig kommt von Haufen → äu.'},
+  {q:'Die meisten fanden den Tag anstrengend, aber ___.', o:['lohnent','lonend','lohnend'], a:2, w:'Verlängern: lohnende → d. Und das h bleibt wie in „Lohn“.'},
+  {q:'Welche Schreibung stimmt?', o:['abends','abents','Abends'], a:0, w:'Verlängern: die Abende → d. „abends“ ist ein Adverb und wird kleingeschrieben.'},
+  {q:'Jeder schrieb eine kurze ___.', o:['rückmeldung','Rückmeldung','Rückmäldung'], a:1, w:'Großschreibung: Endung -ung und Artikel „eine“. „melden“ hat ein e – also kein ä.'},
+  {q:'Sie hat das Buch ___ zurückgegeben.', o:['rechtzeitich','rechtzeitig','rechzeitig'], a:1, w:'Zerlegen: recht | zeitig. Dann Verlängern: rechtzeitige → g.'},
+  {q:'Welche Schreibung stimmt?', o:['vibrirte','vibrierte','wibrierte'], a:1, w:'Verben auf -ieren schreibt man mit ie: vibrieren → vibrierte.'},
+  {q:'Er ist ___ müde.', o:['garnicht','gar nicht','Gar nicht'], a:1, w:'„gar nicht“ schreibt man immer getrennt.'},
+  {q:'Lesen auf Papier ist viel ___.', o:['entspannter','endspannter','entspanter'], a:0, w:'Vorsilbe ent- (wie entdecken). Und „spannen“ hat nn.'},
+];
+// Komma: Wörter durch | getrennt; ^ markiert eine Kommastelle nach dem Wort davor
+const KO = [
+  {s:'Viele legen ihr Handy weg ^ obwohl sie es gern behalten würden.', w:'Komma vor „obwohl“: Ein Nebensatz beginnt.'},
+  {s:'Die Schulleitung hofft ^ dass die Regeln weniger Streit bringen.', w:'Komma vor „dass“: Nebensatz.'},
+  {s:'Die Jugendlichen spielten Karten ^ redeten miteinander und gingen auf den Pausenhof.', w:'Aufzählung: Komma zwischen den Teilen, aber nicht vor „und“.'},
+  {s:'Wer sein Handy abgibt ^ hat mehr Zeit für Gespräche.', w:'Der Nebensatz mit „wer“ steht vorne. Komma nach seinem Verb „abgibt“.'},
+  {s:'Lina findet das praktisch ^ aber Fachleute sehen es kritisch.', w:'Komma vor „aber“: Gegensatz.'},
+  {s:'Weil die Antworten sicher klingen ^ fallen Fehler oft nicht auf.', w:'Der Nebensatz mit „weil“ steht vorne. Komma nach „klingen“.'},
+  {s:'Im Feed tauchen Videos ^ Nachrichten und Werbung auf.', w:'Aufzählung: Komma zwischen „Videos“ und „Nachrichten“, keins vor „und“.'},
+  {s:'Die Schule will ^ dass KI-Antworten überprüft werden ^ und plant dafür eine Unterrichtsreihe.', w:'Der dass-Satz ist eingeschoben: Komma davor und danach.'},
+  {s:'Emre prüft alles nach ^ seit er einen Fehler entdeckt hat.', w:'Komma vor „seit“: Nebensatz.'},
+  {s:'In der Pause spielten sie Tischtennis oder Fußball.', w:'Kein Komma: „oder“ verbindet zwei Wörter, es gibt keinen Nebensatz.'},
+];
+const LE_LINES = ["In der Stadtbibliothek Talbach gibt es seit diesem","Herbst eine „Offline-Ecke“. Wer dort sitzt, legt sein","Handy in ein kleines Schließfach am Eingang. Dafür gibt es","bequeme Sessel, Zeitschriften und eine Kanne Tee.","Die Idee stammt von zwei Auszubildenden. „Viele","Jugendliche kommen zum Lernen her, schauen aber alle paar","Minuten aufs Handy“, sagt Leonie Brandt, 19. Nach Angaben","der Bibliothek nutzen inzwischen rund 40 Besucherinnen und","Besucher pro Woche die Ecke.","Nicht alle sind begeistert. Ein Schüler meint, er brauche","das Handy zum Nachschlagen. Die Bibliothek verweist auf","die Computer im Erdgeschoss. Im Frühjahr soll eine Umfrage","zeigen, ob die Offline-Ecke vergrößert wird."];
+const LE_STARTS = [1,5,10];
+const LE = [
+  {q:'Welche Aussage trifft zu?', o:['In der Offline-Ecke ist das Handy verboten, Verstöße werden bestraft.','Wer in der Offline-Ecke sitzt, legt sein Handy in ein Schließfach.','Die Offline-Ecke gibt es schon seit vielen Jahren.'], a:1, w:'Z. 2 f.: „legt sein Handy in ein kleines Schließfach am Eingang“. Von Strafen steht nichts im Text.'},
+  {q:'Von wem stammt die Idee?', o:['von der Leiterin der Bibliothek','von zwei Auszubildenden','von einem Schüler'], a:1, w:'Z. 5: „Die Idee stammt von zwei Auszubildenden.“'},
+  {q:'In welchen Zeilen steht etwas zur Kritik an der Offline-Ecke?', o:['Z. 1–4','Z. 5–9','Z. 10–13'], a:2, w:'Der dritte Abschnitt beginnt mit „Nicht alle sind begeistert“ (Z. 10–13).'},
+  {q:'In welchen Zeilen erfährst du, wie die Idee entstanden ist und wie viele die Ecke nutzen?', o:['Z. 1–4','Z. 5–9','Z. 10–13'], a:1, w:'Z. 5–9: Idee der Auszubildenden, Zitat, rund 40 Besucher pro Woche.'},
+  {q:'Richtig oder falsch? „Jede Woche nutzen mehr als 100 Menschen die Offline-Ecke.“', o:['richtig','falsch'], a:1, w:'Falsch: rund 40 Besucherinnen und Besucher pro Woche (Z. 8 f.).'},
+  {q:'Was ist mit „Offline-Ecke“ gemeint?', o:['ein Platz, an dem man ohne Handy und Internet liest und lernt','ein Raum mit Computern im Erdgeschoss','ein Schließfach für Bücher'], a:0, w:'Man legt das Handy weg und sitzt mit Sesseln, Zeitschriften und Tee (Z. 2–4).'},
+  {q:'Welche Antwort ERLÄUTERT, warum die Auszubildenden die Ecke eingerichtet haben?', o:['Die Auszubildenden wollten eine Ecke.','Viele Jugendliche schauen beim Lernen alle paar Minuten aufs Handy (Z. 5–7). Ohne Handy können sie sich in der Ecke besser konzentrieren.','Es gibt Tee.'], a:1, w:'Erläutern heißt: Grund nennen, Zusammenhang zeigen und mit Zeile belegen.'},
+  {q:'Welches Zitat ist richtig angegeben?', o:['„Viele Jugendliche kommen zum Lernen her“ (Z. 5 f.)','„Viele Jugendliche kommen zum Lernen“ (Z. 6)','Viele Jugendliche kommen zum Lernen her (Z. 5 f.)'], a:0, w:'Wörtlich, mit Anführungszeichen, richtige Zeilen: Das Zitat beginnt in Z. 5 und endet in Z. 6.'},
+];
+
+// ---------------- Hilfen ----------------
+const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+const esc = t => t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const markBr = t => esc(t).replace(/\[(.+?)\]/, '<mark>$1</mark>');
+
+// Allgemeines Quiz mit Auswahlknöpfen
+function quiz(el, items, opts) {
+  let order = shuffle(items.map((_, i) => i)), pos = 0, score = 0, done = 0, answered = false;
+  function render() {
+    const it = items[order[pos]];
+    const options = opts.options ? opts.options : it.o;
+    el.innerHTML = `<div class="muted">Aufgabe ${pos + 1} von ${items.length}</div>
+      <div class="prompt">${opts.prompt(it)}</div>
+      <div class="opts ${opts.wide ? 'wide' : ''}"></div>
+      <div class="row"><button class="btn ghost nx">Weiter</button><span class="score">${score} von ${done} richtig</span></div>
+      <div class="feedback" role="status" aria-live="polite"></div>`;
+    const box = el.querySelector('.opts'), fb = el.querySelector('.feedback');
+    answered = false;
+    options.forEach((t, i) => {
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = t;
+      b.onclick = () => {
+        if (answered) return; answered = true; done++;
+        const right = opts.options ? t === it.a : i === it.a;
+        if (right) score++;
+        box.querySelectorAll('button').forEach((x, j) => {
+          x.disabled = true;
+          const isA = opts.options ? x.textContent === it.a : j === it.a;
+          if (isA) x.classList.add('ok'); else if (x === b) x.classList.add('bad');
+        });
+        fb.className = 'feedback show ' + (right ? 'good' : 'warn');
+        fb.textContent = (right ? 'Richtig! ' : 'Nicht ganz. ') + it.w;
+        el.querySelector('.score').textContent = `${score} von ${done} richtig`;
+      };
+      box.appendChild(b);
+    });
+    el.querySelector('.nx').onclick = () => {
+      pos++;
+      if (pos >= items.length) { finish(); return; }
+      render();
+    };
+  }
+  function finish() {
+    el.innerHTML = `<div class="prompt"><b>Geschafft!</b> Du hast ${score} von ${items.length} Aufgaben richtig gelöst.</div>
+      <p class="muted">${score === items.length ? 'Stark – alles richtig.' : 'Noch eine Runde? Die Reihenfolge ändert sich jedes Mal.'}</p>
+      <div class="row"><button class="btn primary again">Noch einmal</button></div>`;
+    el.querySelector('.again').onclick = () => { order = shuffle(items.map((_, i) => i)); pos = 0; score = 0; done = 0; render(); };
+  }
+  render();
+}
+
+// Komma-Übung: Lücken zwischen Wörtern antippen
+function comma(el, items) {
+  let order = shuffle(items.map((_, i) => i)), pos = 0, score = 0, checked = false;
+  function render() {
+    const it = items[order[pos]];
+    const raw = it.s.replace(/\.$/, '').split(' ');
+    const words = [], need = new Set();
+    raw.forEach(w => { if (w === '^') need.add(words.length - 1); else words.push(w); });
+    checked = false;
+    let html = '';
+    words.forEach((w, i) => {
+      html += `<span>${esc(w)}</span>`;
+      if (i < words.length - 1) html += `<button class="slot" type="button" data-i="${i}" aria-label="Komma nach ${esc(w)}"></button> `;
+    });
+    el.innerHTML = `<div class="muted">Satz ${pos + 1} von ${items.length}</div>
+      <p>Tippe die Stellen an, an die ein Komma gehört. Manchmal ist es mehr als eins – manchmal keins.</p>
+      <div class="comma-line">${html}.</div>
+      <div class="row"><button class="btn primary ck">Prüfen</button><button class="btn ghost nx">Weiter</button><span class="score">${score} von ${pos} richtig</span></div>
+      <div class="feedback" role="status" aria-live="polite"></div>`;
+    el.querySelectorAll('.slot').forEach(s => s.onclick = () => { if (checked) return; s.classList.toggle('on'); s.textContent = s.classList.contains('on') ? ',' : ''; });
+    el.querySelector('.ck').onclick = () => {
+      if (checked) return; checked = true;
+      let ok = true;
+      el.querySelectorAll('.slot').forEach(s => {
+        const i = +s.dataset.i, on = s.classList.contains('on'), should = need.has(i);
+        if (on && should) s.classList.add('ok');
+        else if (on && !should) { s.classList.add('bad'); ok = false; }
+        else if (!on && should) { s.classList.add('miss'); s.textContent = ','; s.style.color = 'var(--red)'; ok = false; }
+      });
+      if (ok) score++;
+      const fb = el.querySelector('.feedback');
+      fb.className = 'feedback show ' + (ok ? 'good' : 'warn');
+      fb.textContent = (ok ? 'Richtig! ' : 'Nicht ganz – rot zeigt, wo es hakt. ') + it.w;
+      el.querySelector('.score').textContent = `${score} von ${pos + 1} richtig`;
+    };
+    el.querySelector('.nx').onclick = () => {
+      pos++;
+      if (pos >= items.length) {
+        el.innerHTML = `<div class="prompt"><b>Geschafft!</b> ${score} von ${items.length} Sätzen ganz richtig.</div><div class="row"><button class="btn primary again">Noch einmal</button></div>`;
+        el.querySelector('.again').onclick = () => { order = shuffle(items.map((_, i) => i)); pos = 0; score = 0; render(); };
+        return;
+      }
+      render();
+    };
+  }
+  render();
+}
+
+// ---------------- Start ----------------
+quiz(document.getElementById('wa'), WA, { options: WA_OPTS, prompt: it => 'Welche Wortart hat das markierte Wort?<br>' + markBr(it.s) });
+quiz(document.getElementById('sg'), SG, { options: SG_OPTS, prompt: it => 'Welches Satzglied ist markiert?<br>' + markBr(it.s) });
+quiz(document.getElementById('rs'), RS, { prompt: it => esc(it.q) });
+comma(document.getElementById('ko'), KO);
+(function () {
+  const t = document.getElementById('le-text');
+  t.innerHTML = '<h3>Handy ins Fach, Kopf frei</h3><p class="src">Bericht · Talbach-Anzeiger (erfunden)</p><ol>' +
+    LE_LINES.map((l, i) => `<li class="${LE_STARTS.includes(i + 1) && i ? 'p' : ''}">${esc(l)}</li>`).join('') + '</ol>';
+  quiz(document.getElementById('le'), LE, { wide: true, prompt: it => esc(it.q) });
+})();
+
+document.querySelectorAll('nav button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('nav button').forEach(x => x.setAttribute('aria-selected', x === b));
+  document.querySelectorAll('[role=tabpanel]').forEach(p => p.hidden = p.id !== 'pane-' + b.dataset.pane);
+});
+</script>
+</body>
+</html>
